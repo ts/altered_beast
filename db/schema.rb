@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090317123901) do
+ActiveRecord::Schema.define(:version => 20091106155450) do
 
   create_table "brain_busters", :force => true do |t|
     t.string "question"
@@ -74,6 +74,9 @@ ActiveRecord::Schema.define(:version => 20090317123901) do
     t.integer  "forum_id"
     t.text     "body_html"
     t.integer  "site_id"
+    t.string   "file_name"
+    t.string   "content_type"
+    t.integer  "file_size"
   end
 
   add_index "posts", ["created_at", "forum_id"], :name => "index_posts_on_forum_id"

@@ -10,8 +10,11 @@
 
 <%= error_messages_for :topic %>
 <% form_for :topic,
-     :url  => forum_topics_path(@forum) do |f| -%>
+     :url  => forum_topics_path(@forum),
+ 		 :html => {:multipart => true} do |f| -%>
 <%= render :partial => "form", :object => f %>
+<%= f.label :file, "Fichier : " %>
+<%= f.file_field :file %>
 <%= submit_tag I18n.t('txt.post_topic', :default => 'Post topic') %>
 <% end -%>
 

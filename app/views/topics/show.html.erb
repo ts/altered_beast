@@ -120,6 +120,9 @@
 
       <% if post.user.active? %>
         <%= post.body_html %>
+				<% if post.file_name %>
+					Pièce jointe : <%= link_to post.file_name, post.file_url %>
+				<% end %>
       <% else %>
         <p>(<% I18n.t 'txt.suspended_user_post', :default => 'This post has been removed' %>)</p>
       <% end %>
@@ -147,7 +150,7 @@
 <div id="reply" class="editbox">
 <div class="container">
   <%= content_tag 'p', h(flash[:bad_reply]), :class => 'notice' if flash[:bad_reply] %>
-  <% form_for :post, :url => forum_topic_posts_path(@forum, @topic, :page => @topic.last_page) do |f| -%>
+  <% form_for :post, :url => forum_topic_posts_path(@forum, @topic, :page => @topic.last_page), :html => {:multipart => true} do |f| -%>
   <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tr>
       <td rowspan="2" width="70%">
@@ -159,6 +162,7 @@
     </tr>
     <tr>
       <td valign="bottom" style="padding-bottom:15px;">
+			 <%= f.file_field :file %>
        <%= submit_tag I18n.t('txt.views_topics.save_reply', :default => 'Save reply') %> <span class="button_or"><%= I18n.t 'txt.or', :default => 'or' %> <%= link_to link_to(I18n.t('txt.cancel', :default => 'cancel'), '#', :id => 'reply-cancel') %></span>
      </td>
    </tr>

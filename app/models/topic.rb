@@ -1,6 +1,7 @@
 class Topic < ActiveRecord::Base
   include User::Editable
-
+  attr_accessor :file
+  
   before_validation_on_create :set_default_attributes
   validates_presence_of :title
 
@@ -75,7 +76,7 @@ class Topic < ActiveRecord::Base
 
 protected
   def create_initial_post
-    user.reply self, @body #unless locked?
+    user.reply self, @body, @file #unless locked?
     @body = nil
   end
   

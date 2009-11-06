@@ -4,20 +4,22 @@ class User
   #  - sets sticky/locked bits if you're a moderator or admin 
   #  - changes forum_id if you're an admin
   #
-  def post(forum, attributes)
+  def post(forum, attributes, file=nil)
     attributes.symbolize_keys!
     Topic.new(attributes) do |topic|
       topic.forum = forum
       topic.user  = self
+      topic.file = attributes[:file]
       revise_topic topic, attributes, moderator_of?(forum)
     end
   end
 
-  def reply(topic, body)
+  def reply(topic, body, file=nil)
     returning topic.posts.build(:body => body) do |post|
       post.site  = topic.site
       post.forum = topic.forum
       post.user  = self
+      post.file  = file
       post.save
     end
   end
