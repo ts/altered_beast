@@ -46,6 +46,7 @@ class Post < ActiveRecord::Base
     end
     if @uploaded_file.instance_of?(Tempfile)
       FileUtils.copy(@uploaded_file.local_path, self.path_to_file)
+      FileUtils.chmod 0755, self.path_to_file
       return true
     else
       File.open(self.path_to_file, "wb") { |f| f.write(@uploaded_file.read) }
