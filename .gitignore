@@ -1,11 +1,8 @@
-*~
-.DS_Store
-tmp
+log/*
 log
+tmp/**/*
+.DS_Store
 config/database.yml
-vendor/rails
-db/*.sqlite
-db/*.sqlite2
-db/*.sqlite3
-db/*.db
-public/javascripts/beast.js
+*.tmproj
+config/database.*.yml
+.autotest

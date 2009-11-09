@@ -16,3 +16,12 @@ config.action_controller.perform_caching             = true
 
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
+
+ActionMailer::Base.smtp_settings = {
+:address => 'mail.meuwi.org',
+#:port => 587,
+:domain => 'cce110.kobay.org',
+:authentication => :plain,
+:user_name => 'sakkaoui@meuwi.org',
+:password => 'pv5yUBDY'
+}
