@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge, :edit]
   before_filter :find_user, :only => [:update, :show, :edit, :suspend, :unsuspend, :destroy, :purge]
-  before_filter :login_required ###, :only => [:settings, :update]
+  before_filter :login_required, :only => [:settings, :update]
 
   # Brainbuster Captcha
   # before_filter :create_brain_buster, :only => [:new]
@@ -19,17 +19,17 @@ class UsersController < ApplicationController
 
   # render new.rhtml
   def new
-    redirect_to(new_session_path) unless logged_in?
+    # redirect_to(new_session_path) unless logged_in?
   end
 
   def create
-    redirect_to(new_session_path) unless logged_in?
+    # redirect_to(new_session_path) unless logged_in?
     cookies.delete :auth_token
     @user = current_site.users.build(params[:user])    
     @user.save if @user.valid?
     @user.register! if @user.valid?
     unless @user.new_record?
-      # redirect_back_or_default('/login')
+      redirect_back_or_default('/login')
       redirect_to(new_user_path)
       flash[:notice] = I18n.t 'txt.activation_required', 
         :default => "Thanks for signing up! Please click the link in your email to activate your account"
