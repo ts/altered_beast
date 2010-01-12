@@ -17,11 +17,15 @@ config.action_controller.perform_caching             = true
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
 
+ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-:address => 'mail.meuwi.org',
-#:port => 587,
-:domain => 'cce110.kobay.org',
-:authentication => :plain,
-:user_name => 'sakkaoui@meuwi.org',
-:password => 'pv5yUBDY'
+      :address          => 'mail.wereprobablybetterthanyou.com',
+      :port             => 25,
+      :domain           => 'wereprobablybetterthanyou.com',
+      :authentication   => :login,
+      :user_name        => 'admin@wereprobablybetterthanyou.com',
+      :password         => 'bJ8gGrDy'
 }
+ActionMailer::Base.raise_delivery_errors = true
+ActionMailer::Base.perform_deliveries = true
+ActionMailer::Base.default_charset = 'utf-8'

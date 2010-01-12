@@ -14,4 +14,24 @@ config.action_view.debug_rjs                         = true
 config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
-config.action_mailer.raise_delivery_errors = false
+# config.action_mailer.raise_delivery_errors = false
+# ActionMailer::Base.smtp_settings = {
+# :address => 'smtp.gmail.com',
+# :port => 587,
+# :domain => 'ohhush.net',
+# :authentication => :plain,
+# :user_name => 'ts@ohhush.net',
+# :password => '888976'
+# }
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.smtp_settings = {
+      :address          => 'mail.wereprobablybetterthanyou.com',
+      :port             => 25,
+      :domain           => 'wereprobablybetterthanyou.com',
+      :authentication   => :login,
+      :user_name        => 'admin@wereprobablybetterthanyou.com',
+      :password         => 'bJ8gGrDy'
+}
+ActionMailer::Base.raise_delivery_errors = true
+ActionMailer::Base.perform_deliveries = true
+ActionMailer::Base.default_charset = 'utf-8'
