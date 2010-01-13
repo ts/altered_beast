@@ -31,7 +31,6 @@
     <li class="logout"><%= link_to I18n.t('txt.settings', :default => 'Settings'), settings_path %></li>
     <li class="logout"><%= link_to I18n.t('txt.logout', :default => 'Logout'), logout_path(:to => CGI.escape(request.request_uri)) %></li>
     <% else -%>
-    <li><%= link_to I18n.t('txt.signup', :default => 'Signup'), signup_path(:to => CGI.escape(request.request_uri)) %></li>
     <li><%= link_to I18n.t('txt.login', :default => 'Login'), login_path(:to => CGI.escape(request.request_uri)) %></li>
     <% end -%>
   </ul>
