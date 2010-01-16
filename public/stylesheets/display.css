@@ -20,7 +20,7 @@ a { color: #24b; }
 	margin:1em 0;
 	width:70%;
 	background:white;
-	padding:25px;
+	padding:15px;
 	border:5px solid #bbb;
 	border-width:0 5px 5px 0;
 	float:left;
@@ -395,7 +395,7 @@ div.upload a
 
 p
 {
-	font-family:'Lucida Grande', 'Trebuchet MS', Arial, Helvetica, sans-serif;
+	font-family:'Lucida Grande', 'Trebuchet MS', Arial, Helvetica, sans-serif;margin: 0;
 }
 
 
@@ -787,9 +787,8 @@ table.posts tr.spacer td
 .posts .post .body
 {
 	border-top:2px solid #eee;
-	font-size:0.9em;
-	padding:10px 20px;
-}
+	font-size: 0.9em;
+	padding:10px; line-height: 1.6em; }
 
 .posts .post .body blockquote
 {
