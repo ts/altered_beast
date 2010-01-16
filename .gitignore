@@ -2,7 +2,8 @@ log/*
 log
 tmp/**/*
 .DS_Store
-# config/database.yml
+db/*.sqlite3
+config/database.yml
 *.tmproj
 config/database.*.yml
 .autotest
