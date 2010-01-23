@@ -4,7 +4,7 @@ class Forum < ActiveRecord::Base
   acts_as_list
 
   validates_presence_of :name
-  
+    
   belongs_to :site
   
   has_permalink :name
@@ -38,4 +38,5 @@ class Forum < ActiveRecord::Base
   def to_s
     name
   end
+
 end
