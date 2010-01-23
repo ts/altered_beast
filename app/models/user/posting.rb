@@ -38,6 +38,7 @@ class User
 protected
   def revise_topic(topic, attributes, is_moderator)
     topic.title = attributes[:title] if attributes.key?(:title)
+    topic.forum_id = attributes[:forum_id] if attributes.key?(:forum_id)
     topic.sticky, topic.locked = attributes[:sticky], attributes[:locked] if is_moderator
     topic.save
   end
