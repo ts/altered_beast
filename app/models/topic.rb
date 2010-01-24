@@ -7,7 +7,7 @@ class Topic < ActiveRecord::Base
 
   after_create   :create_initial_post
   before_update  :check_for_moved_forum
-  after_update   :set_post_forum_id
+  after_update   :set_post_forum_id, :update_forum_topics_count
   before_destroy :count_user_posts_for_counter_cache
   after_destroy  :update_cached_forum_and_user_counts
 
@@ -97,6 +97,11 @@ protected
     posts.update_all :forum_id => forum_id
     Forum.update_all "posts_count = posts_count - #{posts_count}", ['id = ?', @old_forum_id]
     Forum.update_all "posts_count = posts_count + #{posts_count}", ['id = ?', forum_id]
+  end
+
+  def update_forum_topics_count
+    Forum.update_all "topics_count = topics_count - 1", ['id = ?', @old_forum_id]
+    Forum.update_all "topics_count = topics_count + 1", ['id = ?', forum_id]
   end
   
   def count_user_posts_for_counter_cache
