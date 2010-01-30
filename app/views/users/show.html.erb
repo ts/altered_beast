@@ -30,7 +30,7 @@
   	</p>
   	<% end -%>
   <% end -%>
-
+  <p><%= I18n.t 'txt.last_seen', :default => 'Last seen on {{date}}', :date => @user.last_seen_at.to_date.to_s(:long) rescue nil %></p>
   <p><%= link_to I18n.t('txt.admin.suspend_user_account', :default => "Suspend user account"), suspend_user_path(@user), :method => :put %></p>
 
 <% else %>
